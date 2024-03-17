@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.27)
 project(SummerStl VERSION 0.0.1)
 string(TIMESTAMP COMPILE_TIME %Y%m%d-%H%M%S)
 
