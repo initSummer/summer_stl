@@ -15,14 +15,15 @@
 namespace Summer {
 template<typename T>
 class vector {
+// todo: function discription
  public:
   vector();
   ~vector();
 
  public:
-  bool empty() const;
-  int size() const;
-  int capacity() const;
+  [[nodiscard]] bool empty() const;
+  [[nodiscard]] int size() const;
+  [[nodiscard]] int capacity() const;
 
  public:
   const T &front() const;
@@ -33,10 +34,10 @@ class vector {
 
  public:
   vector<T> &operator=(const vector<T> &other);
-  void push_back(const T &t);
+  void push_back(const T &value);
   void pop_back();
-  void reserve(int n);
-  void resize(int n);
+  void reserve(int capacity);
+  void resize(int size);
   void clear();
   void swap(vector &other);
 
@@ -45,7 +46,7 @@ class vector {
 
  private:
   // todo:
-  void _resize(int n);
+  void _resize(int size);
 
  private:
   T *data_;
@@ -59,12 +60,7 @@ vector<T>::vector(): data_(nullptr), size_(0), capacity_(0) {
 }
 template<typename T>
 vector<T>::~vector() {
-  if (data_ != nullptr) {
-    delete[] data_;
-    data_ = nullptr;
-    size_ = 0;
-    capacity_ = 0;
-  }
+  delete[] data_;
 }
 
 template<typename T>
@@ -146,9 +142,7 @@ void vector<T>::push_back(const T &value) {
   for (int i = 0; i < size_; ++i) {
     data[i] = data_[i];
   }
-  if (data_ != nullptr) {
-    delete[] data_;
-  }
+  delete[] data_;
   data_ = data;
   data_[size_] = value;
   size_ += 1;
@@ -170,9 +164,7 @@ void vector<T>::reserve(int capacity) {
     for (int i = 0; i < size_; ++i) {
       data[i] = data_[i];
     }
-    if (data_ != nullptr) {
-      delete[] data_;
-    }
+    delete[] data_;
     data_ = data;
     capacity_ = capacity;
   }
@@ -238,9 +230,7 @@ void vector<T>::_resize(int size) {
   for (int i = 0; i < size_; ++i) {
     data[i] = data_[i];
   }
-  if (data_ != nullptr) {
-    delete[] data_;
-  }
+  delete[] data_;
   data_ = data;
 }
 }
