@@ -39,7 +39,7 @@ class vector {
   void reserve(int capacity);
   void resize(int size);
   void clear();
-  void swap(vector &other);
+  void swap(vector<T> &other);
 
  public:
   void print() const;
@@ -191,7 +191,7 @@ void vector<T>::clear() {
 }
 
 template<typename T>
-void vector<T>::swap(vector &other) {
+void vector<T>::swap(vector<T> &other) {
   T *data = other.data_;
   int size = other.size_;
   int capacity = other.capacity_;

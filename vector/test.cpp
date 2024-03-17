@@ -32,6 +32,20 @@ int main() {
   std::cout << "front: " << v.front() << std::endl;
   std::cout << "back: " << v.back() << std::endl;
 
+  std::cout << std::endl;
+  std::cout << "v" << std::endl;
+  v.print();
+  std::cout << std::endl;
+  Summer::vector<int>v2;
+  v2.swap(v);
+  std::cout << "v" << std::endl;
+  v.print();
+  std::cout << std::endl;
+  std::cout << "v2" << std::endl;
+  v2.print();
+  std::cout << std::endl;
+
+
   v.clear();
   v.print();
 
