@@ -5,7 +5,7 @@ DEPS = vector.h
 TARGET = test
 
 $(TARGET): test.cpp
-	$(CC) $(STANDARD) -o $(TARGET) test.cc $(CFLAGS)
+	$(CC) $(STANDARD) -o $(TARGET) test.cpp $(CFLAGS)
 
  .PHONY : clean
 clean :
