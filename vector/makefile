@@ -4,7 +4,7 @@ CFLAGS = -I.
 DEPS = vector.h
 TARGET = test
 
-$(TARGET): test.cpp
+$(TARGET): test.cpp summer_vector.h
 	$(CC) $(STANDARD) -o $(TARGET) test.cpp $(CFLAGS)
 
  .PHONY : clean

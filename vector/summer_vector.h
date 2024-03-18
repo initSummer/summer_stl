@@ -9,7 +9,11 @@
 
 #pragma once
 
+#define SUMMER_DEBUG
+
+#ifdef SUMMER_DEBUG
 #include <iostream>
+#endif
 #include <stdexcept>
 
 namespace Summer {
@@ -41,8 +45,10 @@ class vector {
   void clear();
   void swap(vector<T> &other);
 
+#ifdef SUMMER_DEBUG
  public:
   void print() const;
+#endif
 
  private:
   // todo:
@@ -205,6 +211,7 @@ void vector<T>::swap(vector<T> &other) {
   capacity_ = capacity;
 }
 
+#ifdef SUMMER_DEBUG
 template<typename T>
 void vector<T>::print() const {
   std::cout << "type: " << typeid(T).name() << std::endl;
@@ -214,6 +221,7 @@ void vector<T>::print() const {
     std::cout << data_[i] << std::endl;
   }
 }
+#endif
 
 template<typename T>
 void vector<T>::_resize(int size) {
