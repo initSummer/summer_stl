@@ -61,10 +61,13 @@ class vector {
 };
 
 template<typename T>
+// construct
 vector<T>::vector(): data_(nullptr), size_(0), capacity_(0) {
 
 }
+
 template<typename T>
+// destruct
 vector<T>::~vector() {
   delete[] data_;
 }
@@ -126,13 +129,23 @@ T &vector<T>::operator[](int index) {
 template<typename T>
 vector<T> &vector<T>::operator=(const vector<T> &other) {
   if (capacity_ < other.size_) {
-    _resize(other.size_);
+    capacity_ = 0;
+    while (capacity_ < other.size_){
+      if(capacity_ = 0) {
+        capacity_ = 1;
+      } else {
+        capacity_ *= 2;
+      }
+    }
+    T* data = new T[capacity_];
+    delete [] data_;
+    data_ = data;
   }
   for (int i = 0; i < other.size_; ++i) {
     data_[i] = other.data_[i];
   }
   size_ = other.size_;
-  capacity_ = other.capacity_;
+  // capacity_ = other.capacity_;
 }
 
 template<typename T>
@@ -182,7 +195,20 @@ void vector<T>::resize(int size) {
     return;
   } else if (size_ < size) {
     if (size > capacity_) {
-      _resize(size);
+      capacity_ = 0;
+      while (capacity_ < other.size_){
+        if(capacity_ = 0) {
+          capacity_ = 1;
+        } else {
+          capacity_ *= 2;
+        }
+      }
+      T* data = new T[capacity_];
+      for (int i = 0; i < size_; ++i) {
+        data[i] = data_[i]
+      }
+      delete [] data_;
+      data_ = data;
     }
     for (int i = size_; i < size; ++i) {
       data_[i] = T();
@@ -225,7 +251,7 @@ void vector<T>::print() const {
 
 template<typename T>
 void vector<T>::_resize(int size) {
-  // todo: debug: what if size < size_
+  // rewrite
   capacity_ = 0;
   while (capacity_ < size) {
     if (capacity_ == 0) {
